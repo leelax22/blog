@@ -8,8 +8,7 @@ import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
-import TableOfContents from "@/components/TableOfContents.astro";
-import CusdisComments from "@/components/CusdisComments.astro"; // 댓글 컴포넌트 import
+import TableOfContents from "@/components/TableOfContents.astro"; // 목차 컴포넌트 import
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
@@ -36,7 +35,7 @@ const {
   hideEditPost,
 } = post.data;
 
-const { Content, headings } = await render(post);
+const { Content, headings } = await render(post); // headings도 함께 가져옵니다
 
 let ogImageUrl: string | undefined;
 
@@ -80,11 +79,6 @@ const currentPostIndex = allPosts.findIndex(a => a.slug === post.id);
 const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
 const nextPost =
   currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
-  
-// 댓글 컴포넌트를 위한 파라미터
-const pageId = post.id; // 포스트 ID를 고유 식별자로 사용
-const pageUrl = Astro.url.href;
-const pageTitle = title;
 ---
 
 <Layout {...layoutProps}>
@@ -116,7 +110,6 @@ const pageTitle = title;
 
       <hr class="my-8 border-dashed" />
 
-
       <EditPost class="sm:hidden" {hideEditPost} {post} />
 
       <ul class="mt-4 mb-8 sm:my-8">
@@ -135,25 +128,7 @@ const pageTitle = title;
         </button>
       </div>
 
-
-
-      <!-- 댓글 영역 -->
-      <div class="comments-section mt-8">
-        <h2 class="text-xl font-bold mb-4">댓글</h2>
-        <CusdisComments
-          pageId={pageId}
-          pageUrl={pageUrl}
-          pageTitle={pageTitle}
-        />
-      </div>
-
-
-
-
       <hr class="my-6 border-dashed" />
-
-
-
 
       <!-- Previous/Next Post Buttons -->
       <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -198,8 +173,6 @@ const pageTitle = title;
   
   <Footer />
 </Layout>
-
-
 
 <script is:inline data-astro-rerun>
   /** Create a progress indicator

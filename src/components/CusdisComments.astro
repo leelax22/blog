@@ -1,0 +1,24 @@
+---
+// props 타입 정의
+const { pageId, pageUrl, pageTitle } = Astro.props;
+---
+
+<div id="cusdis_thread"
+  data-host="https://comment.haramuko.site"
+  data-app-id="b3168a2b-2c71-4442-aee8-03b54629ea3a"
+  data-page-id="{{ PAGE_ID }}"
+  data-page-url="{{ PAGE_URL }}"
+  data-page-title="{{ PAGE_TITLE }}"
+></div>
+
+<script is:browser>
+  // Cusdis 스크립트 동적 삽입
+  if (!document.getElementById('cusdis-script')) {
+    const script = document.createElement('script');
+    script.id = 'cusdis-script';
+    script.src = 'https://comment.haramuko.site/js/cusdis.es.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }
+</script>

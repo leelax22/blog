@@ -68,7 +68,7 @@ export const SHARE_LINKS = [
   },
   {
     name: "Mail",
-    href: "mailto:?subject=See%20this%20post&body=",
+    href: "mailto:leelax@naver.com",
     linkTitle: `Share this post via email`,
     icon: IconMail,
   },

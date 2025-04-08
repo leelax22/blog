@@ -1,0 +1,19 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+	<title>IconPinkCloud</title>
+	<defs>
+		<image  width="40" height="26" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAaAQMAAAD/goyIAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA0wBqh8+64AAAAAJ0Uk5TAP9bkSK1AAAAWElEQVR4nIXNsRGAIBBE0V11BjPtwFLUyrA0SrEEyWBGPLkjMDR52e4n4PeN4BNnor/zSLhUBlU6YrqaIF1CdTnVNaj++BQA2SymmPhRt7C3prCm6oO24gubTyTv4vh73wAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+	</style>
+	<g id="Vivid.JS">
+		<g id="Vivid-Icons">
+			<g id="Icons">
+				<g id="cloud">
+					<g id="Shape">
+						<use id="레이어 1" href="#img1" x="0" y="7"/>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

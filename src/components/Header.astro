@@ -6,6 +6,7 @@ import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
+import DummyLogo from "@/assets/logo.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
 
@@ -43,7 +44,10 @@ const isActive = (path: string) => {
         href="/"
         class="absolute py-1 text-2xl leading-7 font-semibold whitespace-nowrap sm:static"
       >
-        {SITE.title}
+        
+        
+        <DummyLogo class="dark:invert" />
+
       </a>
       <nav
         id="nav-menu"

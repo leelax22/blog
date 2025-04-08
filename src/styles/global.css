@@ -5,19 +5,19 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
+  --background: #fafcfc;
+  --foreground: #222e36;
+  --accent: #d3006a;
+  --muted: #f1bad4;
+  --border: #e3a9c6;
 }
 
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60bf;
-  --border: #ab4b08;
+  --background: #353640;
+  --foreground: #e9edf1;
+  --accent: #ff78c8;
+  --muted: #715566;
+  --border: #86436b;
 }
 
 @theme inline {
@@ -42,7 +42,7 @@ html[data-theme="dark"] {
   }
   a,
   button {
-    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-solid;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
@@ -55,5 +55,75 @@ html[data-theme="dark"] {
 }
 
 .active-nav {
-  @apply underline decoration-wavy decoration-2 underline-offset-4;
+  @apply underline decoration-1 underline-offset-5;
+}
+
+
+/* ===== Table of Contents Styles ===== */
+@layer components {
+  /* 페이지 컨테이너 설정 */
+  .page-container {
+    @apply relative w-full max-w-7xl mx-auto;
+  }
+
+  /* 목차 사이드바 스타일 */
+  .toc-sidebar {
+    @apply block absolute top-0 right-0 w-64 pr-4 ml-8;
+  }
+
+  /* 목차 내용을 fixed로 고정 */
+  .toc-wrapper {
+    @apply fixed top-24 w-64 max-h-[calc(100vh-150px)] overflow-y-auto pb-8;
+  }
+
+  /* 목차 컴포넌트 스타일 */
+  .toc {
+    @apply bg-background border-l border-border pl-4 py-4 text-foreground;
+  }
+
+  .toc-title {
+    @apply font-bold mb-4 text-foreground;
+    color: #d3006a;
+  }
+
+  .toc ul {
+    @apply list-none p-0 m-0;
+  }
+
+  .toc li {
+    @apply mb-2 leading-tight;
+  }
+
+  .toc li a {
+    @apply text-foreground no-underline transition-colors hover:text-accent;
+  }
+
+  .toc .depth-2 {
+    @apply ml-0;
+  }
+
+
+  .toc .depth-3 {
+    @apply ml-4 text-sm;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .toc .depth-3::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: #d3006a; /* 기호 색도 강조하고 싶으면 추가 */
+  }
+
+  /* 모바일 화면에서는 목차 숨기기 */
+  @media (max-width: 1200px) {
+    .toc-sidebar {
+      @apply hidden;
+    }
+  }
+
+  .toc-tothetopbt {
+    @apply bg-background text-foreground no-underline transition-colors hover:text-accent;
+  }
 }
