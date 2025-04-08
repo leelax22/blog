@@ -8,7 +8,7 @@ import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
 import BackButton from "@/components/BackButton.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
-import Remark42Comments from "@/components/Remark42Comments.astro";
+import CusdisComments from "@/components/CusdisComments.astro"; // 댓글 컴포넌트 import
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
@@ -81,8 +81,9 @@ const nextPost =
   currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
   
 // 댓글 컴포넌트를 위한 파라미터
-const remarkHost = "https://comment.haramuko.site"; // 실제 Remark42 서버 URL로 변경하세요
-const remarkSiteId = "blog"; // 실제 사이트 ID로 변경하세요
+const pageId = post.id; // 포스트 ID를 고유 식별자로 사용
+const pageUrl = Astro.url.href;
+const pageTitle = title;
 ---
 
 <Layout {...layoutProps}>
@@ -124,17 +125,19 @@ const remarkSiteId = "blog"; // 실제 사이트 ID로 변경하세요
       <!-- 댓글 영역 -->
       <div class="comments-section mt-8">
         <h2 class="text-xl font-bold mb-4">댓글</h2>
-        <Remark42Comments 
-          host={remarkHost} 
-          siteId={remarkSiteId}
-          id={post.id} // 포스트 ID를 댓글 ID로 사용
-          url={Astro.url.href} // 현재 페이지 URL
-          className="mt-4"
+        <CusdisComments
+          pageId={pageId}
+          pageUrl={pageUrl}
+          pageTitle={pageTitle}
         />
       </div>
 
 
+
+
       <hr class="my-6 border-dashed" />
+
+
 
 
       <!-- Previous/Next Post Buttons -->

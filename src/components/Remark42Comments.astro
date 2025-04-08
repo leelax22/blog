@@ -1,0 +1,44 @@
+---
+// Remark42Comments.astro
+export interface Props {
+  host?: string;
+  siteId?: string;
+  url?: string;
+  id?: string;
+  className?: string;
+}
+
+const {
+  host = "https://comment.haramuko.site", 
+  siteId = "blog", 
+  url,
+  id,
+  className = ""
+} = Astro.props;
+---
+
+<div id="remark42" class={className}></div>
+
+<script define:vars={{ host, siteId, url, id }}>
+  // Remark42 설정
+  window.remark_config = {
+    host: host,
+    site_id: siteId
+  };
+  
+  // URL과 ID가 제공되었다면 추가
+  if (url) window.remark_config.url = url;
+  if (id) window.remark_config.id = id;
+  
+  // Remark42 스크립트 로딩
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document,
+        s = d.createElement('script');
+      s.async = true;
+      s.defer = true;
+      s.src = remark_config.host + '/web/' + c[i] + '.js';
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components || ['embed']);
+</script>
